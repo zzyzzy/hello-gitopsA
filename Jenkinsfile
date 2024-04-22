@@ -41,13 +41,13 @@ pipeline {
         stage('Push to Git Repo') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh """
+                    sh '''
                         git config --global user.email "zzyzigy@gmail.com"
                         git config --global user.name "zzyzzy"
                         git add hellogitops
                         git commit -m "Update ArgoCD Deployment"
-                        git push https://${USERNAME}:${PASSWORD}@github.com/hello-gitopsB.git HEAD:main
-                    """
+                        git push https://"${USERNAME}":"${PASSWORD}"@github.com/hello-gitopsB.git HEAD:main
+                    '''
                 }
             }
         }
