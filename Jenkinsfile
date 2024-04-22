@@ -47,7 +47,7 @@ pipeline {
                         git config --global user.name "zzyzzy"
                         git add hellogitops
                         git commit -m "Update ArgoCD Deployment"
-                        git push https://"${USERNAME}":"${PASSWORD}"@github.com/hello-gitopsB.git HEAD:main
+                        git push https://"${USERNAME}":"${PASSWORD}"@github.com/zzyzzy/hello-gitopsB.git HEAD:main
                     '''
                 }
             }
