@@ -34,6 +34,7 @@ pipeline {
             steps {
                 sh 'kompose convert -c'
                 sh 'mv docker-compose hellogitops'
+                sh 'chmod 777 hellogitops'
                 sh 'ls'
             }
         }
