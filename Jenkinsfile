@@ -29,5 +29,27 @@ pipeline {
                 }
             }
         }
-    }
-}
+
+        stage('docker-compose convert helm') {
+            steps {
+                sh 'kompose convert -c'
+                sh 'ls'
+            }
+        }
+        
+        /*stage('Push to Git Repo') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                    sh """
+                        git config --global user.email "zzyzigy@gmail.com"
+                        git config --global user.name "zzyzzy"
+                        git add nginx-deployment.yaml
+                        git commit -m "Update ArgoCD Deployment"
+                        git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/hello-gitopsB.git HEAD:main
+                    """
+                }
+            }
+        }*/
+        
+    } // statges
+} // pipeline
