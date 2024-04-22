@@ -1,5 +1,5 @@
 pipeline {
-    agent { 'agent' }
+    agent { label 'agent2' }
 
     environment {
         DOCKER_REGISTRY = 'https://registry.hub.docker.com'
