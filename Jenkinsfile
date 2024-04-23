@@ -41,7 +41,8 @@ pipeline {
         
         stage('Push to Git Repo') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                //withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    git credentialsId: 'gitlogin', url: 'https://github.com/zzyzzy/hello-gitopsB.git'
                     sh '''
                         git config --global user.email "zzyzigy@gmail.com"
                         git config --global user.name "zzyzzy"
@@ -49,7 +50,7 @@ pipeline {
                         git commit -m "Update ArgoCD Deployment"
                         git push https://"${USERNAME}":"${PASSWORD}"@github.com/zzyzzy/hello-gitopsB.git HEAD:main
                     '''
-                }
+                //}
             }
         }
         
