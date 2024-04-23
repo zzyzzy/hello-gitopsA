@@ -42,7 +42,7 @@ pipeline {
         stage('Push to Git Repo') {
             steps {
                 //withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    git credentialsId: 'gitlogin', url: 'https://github.com/zzyzzy/hello-gitopsB.git'
+                    git credentialsId: 'github-credentials', url: 'https://github.com/zzyzzy/hello-gitopsB.git'
                     sh '''
                         git config --global user.email "zzyzigy@gmail.com"
                         git config --global user.name "zzyzzy"
